@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plagiarism Detection System</title>
+</head>
+<body style="font-family:Arial; background:#f4f4f4;">
+
+<div style="width:70%; margin:50px auto; background:white; padding:30px; border-radius:10px;">
+    <h2 style="text-align:center;">Plagiarism Detection System</h2>
+
+    <form method="POST">
+        <label>Text 1</label><br>
+        <textarea name="text1" required style="width:100%; height:120px;"></textarea><br><br>
+
+        <label>Text 2</label><br>
+        <textarea name="text2" required style="width:100%; height:120px;"></textarea><br><br>
+
+        <button type="submit" style="width:100%; padding:10px;">Check Plagiarism</button>
+    </form>
+
+    {% if similarity_score is not none %}
+        <hr>
+        <h3>Similarity Score: {{ similarity_score }}%</h3>
+        <p>{{ result }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>

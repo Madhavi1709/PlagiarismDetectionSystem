@@ -22,4 +22,3 @@ their similarity using **TF-IDF Vectorization** and **Cosine Similarity**.
 
 ---
 
-## 📂 Project Structure

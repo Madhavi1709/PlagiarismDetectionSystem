@@ -21,4 +21,3 @@ their similarity using **TF-IDF Vectorization** and **Cosine Similarity**.
 - Cosine Similarity
 
 ---
-

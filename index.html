@@ -1,19 +1,93 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Plagiarism Detection System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            margin: 60px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin-top: 15px;
+            padding: 12px;
+            font-size: 14px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a67d8;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 13px;
+        }
+    </style>
 </head>
-<body style="font-family: Arial; text-align: center; padding: 40px;">
+
+<body>
+
+<div class="container">
     <h1>Plagiarism Detection System</h1>
-    <p>Detects similarity between two texts using NLP techniques</p>
+    <p>Enter two texts to check similarity</p>
 
-    <h3>Technology Stack</h3>
-    <p>Python • TF-IDF • Cosine Similarity • Scikit-learn</p>
+    <form>
+        <label><strong>Text 1:</strong></label>
+        <textarea placeholder="Enter first text here..."></textarea>
 
-    <h3>GitHub Repository</h3>
-    <a href="https://github.com/your-username/plagiarism-detection">
-        View Source Code
-    </a>
+        <label><strong>Text 2:</strong></label>
+        <textarea placeholder="Enter second text here..."></textarea>
+
+        <button type="submit">Check Plagiarism</button>
+    </form>
+
+    <div class="footer">
+        <p>Built using Python & NLP | TF-IDF & Cosine Similarity</p>
+    </div>
+</div>
+
 </body>
 </html>

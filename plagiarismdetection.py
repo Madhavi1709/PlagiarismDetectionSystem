@@ -1,30 +1,37 @@
+from flask import Flask, render_template, request
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Take input from user
-print("Enter first text:")
-text1 = input()
+app = Flask(__name__)
 
-print("\nEnter second text:")
-text2 = input()
+@app.route("/", methods=["GET", "POST"])
+def index():
+    similarity_score = None
+    result = None
 
-# Create TF-IDF Vectorizer
-vectorizer = TfidfVectorizer()
+    if request.method == "POST":
+        text1 = request.form["text1"]
+        text2 = request.form["text2"]
 
-# Convert texts into TF-IDF vectors
-tfidf_matrix = vectorizer.fit_transform([text1, text2])
+        vectorizer = TfidfVectorizer()
+        tfidf_matrix = vectorizer.fit_transform([text1, text2])
+        similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
+        score = similarity[0][0]
 
-# Compute cosine similarity
-similarity = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:2])
+        similarity_score = round(score * 100, 2)
 
-# Display result
-score = similarity[0][0]
-print("\nCosine Similarity Score: {:.2f}".format(score))
+        if score > 0.8:
+            result = "High similarity — Possible plagiarism"
+        elif score > 0.5:
+            result = "Moderate similarity — Review recommended"
+        else:
+            result = "Low similarity — Texts are likely original"
 
-# Interpret score
-if score > 0.8:
-    print("High similarity — possible plagiarism.")
-elif score > 0.5:
-    print("Moderate similarity — review recommended.")
-else:
-    print("Low similarity — texts are likely original.")
+    return render_template(
+        "index.html",
+        similarity_score=similarity_score,
+        result=result
+    )
+
+if __name__ == "__main__":
+    app.run(debug=True)
